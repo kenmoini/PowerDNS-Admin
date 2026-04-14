@@ -1,6 +1,18 @@
 ---
 version: 2
 updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Check for updates to GitHub Actions every weekday
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
   - package-ecosystem: npm
     target-branch: dev
     directory: /
@@ -11,6 +23,7 @@ updates:
         update-types: [ "version-update:semver-major" ]
     labels:
       - 'feature / dependency'
+
   - package-ecosystem: pip
     target-branch: dev
     directory: /
