@@ -48,7 +48,7 @@ jobs:
             type=semver,pattern={{major}}
 
       - name: QEMU Setup
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v4
 
       - name: Docker Buildx Setup
         id: buildx
