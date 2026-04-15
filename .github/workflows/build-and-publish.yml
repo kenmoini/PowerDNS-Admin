@@ -6,7 +6,7 @@ env:
   CONTAINERFILE_PATH: Dockerfile
   WORKFLOW_TRIGGER: 1
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: powerdns-admin
 
 on:
   workflow_dispatch:
