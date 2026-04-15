@@ -1092,10 +1092,10 @@ jtimeout@^3.2.0:
   dependencies:
     jquery ">=1.7.1 <4.0.0"
 
-knockout@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/knockout/-/knockout-3.5.1.tgz#62c81e81843bea2008fd23c575edd9ca978e75cf"
-  integrity sha512-wRJ9I4az0QcsH7A4v4l0enUpkS++MBx0BnL/68KaLzJg7x1qmbjSlwEoCNol7KTYZ+pmtI7Eh2J0Nu6/2Z5J/Q==
+knockout@^3.5.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/knockout/-/knockout-3.5.3.tgz#14148b43635dce712f7705822360e97c037b4138"
+  integrity sha512-6iPv8M/xDPYfsiKyEyIPcSYBt8L+FZoJS/frLT8Nq3n9kMvP+WZ6ZPehYZV5c22Qc64Ie7unmTqYqgSdCB1Taw==
 
 levn@~0.3.0:
   version "0.3.0"
