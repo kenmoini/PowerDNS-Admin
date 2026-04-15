@@ -39,7 +39,7 @@ on:
       - SECURITY.md
 
 jobs:
-  build-and-push-docker-image:
+  build:
     name: Build Docker Image
     runs-on: ubuntu-latest
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
