@@ -22,7 +22,7 @@ updates:
     open-pull-requests-limit: 50
 
   - package-ecosystem: npm
-    target-branch: dev
+    # target-branch: master
     directory: /
     schedule:
       interval: daily
@@ -34,7 +34,7 @@ updates:
     open-pull-requests-limit: 50
 
   - package-ecosystem: pip
-    target-branch: dev
+    # target-branch: master
     directory: /
     schedule:
       interval: daily
