@@ -1,0 +1,35 @@
+# Build image
+FROM quay.io/fedora/fedora:43 AS builder
+
+ARG BUILD_DEPENDENCIES="binutils glibc-common glibc-langpack-en file-devel file gcc g++ make patch glibc-devel \
+    libffi-devel \
+    libpq-devel \
+    libxml2-devel \
+    mariadb-connector-c-devel \
+    openldap-devel \
+    python3-devel \
+    python3-pip \
+    python3-cffi \
+    python3-psycopg2 \
+    xmlsec1-devel \
+    npm \
+    yarn \
+    cargo"
+
+# ENV LC_ALL=en_US.UTF-8 \
+#     LANG=en_US.UTF-8 \
+#     LANGUAGE=en_US.UTF-8
+ENV FLASK_APP=/build/powerdnsadmin/__init__.py
+
+# Get dependencies
+RUN dnf update -y \
+    && dnf install -y ${BUILD_DEPENDENCIES}
+
+WORKDIR /build
+
+# We copy just the requirements.txt first to leverage Docker cache
+COPY ./requirements.txt /build/requirements.txt
+
+# Get application dependencies
+RUN python3 -m pip install --upgrade pip \
+ && python3 -m pip install -r requirements.txt
