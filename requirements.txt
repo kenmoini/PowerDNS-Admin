@@ -42,7 +42,7 @@ rjsmin==1.2.1
 webcolors==1.12
 werkzeug==3.1.6
 zipp==3.19.1
-rcssmin==1.1.1
+rcssmin==1.2.2
 zxcvbn==4.4.28
 psycopg2==2.9.11
 setuptools==78.1.1
