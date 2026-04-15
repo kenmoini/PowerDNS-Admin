@@ -1,3 +1,4 @@
+# Build image
 FROM alpine:3.23 AS builder
 
 ARG BUILD_DEPENDENCIES="build-base \
@@ -67,8 +68,8 @@ RUN mkdir -p /app && \
     mkdir -p /app/configs && \
     cp -r /build/configs/docker_config.py /app/configs
 
-# Build image
-FROM alpine:3.17
+# Distribution image
+FROM alpine:3.23
 
 ENV FLASK_APP=/app/powerdnsadmin/__init__.py \
     USER=pda
