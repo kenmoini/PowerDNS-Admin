@@ -10,7 +10,13 @@ updates:
     open-pull-requests-limit: 50
 
   - package-ecosystem: "docker"
-    directory: "/"
+    directory: "/docker"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 50
+
+  - package-ecosystem: "docker"
+    directory: "/docker-test"
     schedule:
       interval: "daily"
     open-pull-requests-limit: 50
