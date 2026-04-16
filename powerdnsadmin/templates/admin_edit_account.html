@@ -17,7 +17,7 @@
                     <h1 class="m-0 text-dark">{{ action_label }} Account</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ url_for('admin.manage_account') }}">Accounts</a></li>
                         <li class="breadcrumb-item active">{{ action_label }} Account</li>
@@ -44,22 +44,19 @@
                             <div class="card-body">
                                 {% if error %}
                                     <div class="alert alert-danger alert-dismissible">
-                                        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">
-                                            &times;
-                                        </button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         <h4><i class="fa-solid fa-ban"></i> Error!</h4>
                                         {{ error }}
                                     </div>
                                     <span class="help-block">{{ error }}</span>
                                 {% endif %}
                                 <div
-                                    class="form-group has-feedback {% if invalid_accountname or duplicate_accountname %}has-error{% endif %}">
+                                    class="mb-3 {% if invalid_accountname or duplicate_accountname %}has-error{% endif %}">
                                     <label class="control-label" for="accountname">Name</label>
                                     <input type="text" class="form-control" placeholder="Account Name (required)"
                                            name="accountname" id="accountname"
                                            {% if account %}value="{{ account.name }}" {% endif %}
                                            {% if not create %}disabled{% endif %} required>
-                                    <span class="form-control-feedback"></span>
                                     {% if invalid_accountname %}
                                         <span class="help-block text-danger">Cannot be blank and must only contain alphanumeric
                     characters{% if SETTING.get('account_name_extra_chars') %}, dots, hyphens or underscores{% endif %}.
@@ -68,26 +65,24 @@
                                         <span class="help-block text-danger">Account name already in use.</span>
                                     {% endif %}
                                 </div>
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="accountdescription">Description</label>
                                     <input type="text" class="form-control" placeholder="Account Description (optional)"
                                            name="accountdescription" id="accountdescription"
                                            {% if account %}value="{{ account.description }}" {% endif %}>
                                     <span class="orm-control-feedback"></span>
                                 </div>
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="accountcontact">Contact Person</label>
                                     <input type="text" class="form-control" placeholder="Contact Person (optional)"
                                            name="accountcontact" id="accountcontact"
                                            {% if account %}value="{{ account.contact }}" {% endif %}>
-                                    <span class="form-control-feedback"></span>
                                 </div>
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="accountmail">Mail Address</label>
                                     <input type="email" class="form-control" placeholder="Mail Address (optional)"
                                            name="accountmail" id="accountmail"
                                            {% if account %}value="{{ account.mail }}" {% endif %}>
-                                    <span class="form-control-feedback"></span>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -100,7 +95,7 @@
                                     associated with the account.
                                 </p>
                                 <p>Click on users to move between columns.</p>
-                                <div class="form-group col-2">
+                                <div class="mb-3 col-2">
                                     <select multiple="multiple" class="form-control" id="account_multi_user"
                                             name="account_multi_user">
                                         {% for user in users %}
@@ -120,7 +115,7 @@
                                 </p>
                                 <p>Hover over the red zone names to show the associated account. Click on zones to
                                     move between columns.</p>
-                                <div class="form-group col-2">
+                                <div class="mb-3 col-2">
                                     <select multiple="multiple" class="form-control" id="account_domains"
                                             name="account_domains">
                                         {% for domain in domains %}
@@ -144,11 +139,11 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="button" class="btn btn-secondary float-left" title="Cancel"
+                                <button type="button" class="btn btn-secondary float-start" title="Cancel"
                                         onclick="window.location.href='{{ url_for('admin.manage_account') }}'">
                                     Cancel
                                 </button>
-                                <button type="submit" class="btn btn-primary float-right"
+                                <button type="submit" class="btn btn-primary float-end"
                                         title="{{ action_label }} Account">
                                     {{ action_label }} Account
                                 </button>

@@ -10,7 +10,7 @@
                     <h1 class="m-0 text-dark">Zone Templates</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Zone Templates</li>
                     </ol>
@@ -28,13 +28,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="alert alert-danger alert-dismissible">
-                                <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;
-                                </button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 <h4>
                                     <i class="fa-solid fa-ban"></i> Error!
                                 </h4>
                                 <div class="alert-message block-message error">
-                                    <a class="close" href="#">x</a>
+                                    <button type="button" class="btn-close" aria-label="Close"></button>
                                     <ul>
                                         {%- for msg in errors %}
                                             <li>{{ msg }}</li>

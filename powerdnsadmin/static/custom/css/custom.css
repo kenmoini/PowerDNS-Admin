@@ -80,3 +80,11 @@ div.records > div.dataTables_wrapper table.dataTable { margin: 0 !important; }
 .diff-addition::before {
     content: "+";
 }
+
+/* bootstrap-validator compatibility - BS5 removed has-error styling */
+.has-error .form-control {
+    border-color: var(--bs-danger);
+}
+.has-error .help-block {
+    color: var(--bs-danger);
+}

@@ -212,7 +212,7 @@
                             </h1>
                         </div>
                         <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
+                            <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Home</a></li>
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
@@ -228,7 +228,7 @@
     <footer class="main-footer">
         <strong><a href="https://github.com/PowerDNS-Admin/PowerDNS-Admin">PowerDNS-Admin</a></strong> - A PowerDNS web
         interface with advanced features.
-        <span class="float-right">Version 0.4.2</span>
+        <span class="float-end">Version 0.4.2</span>
     </footer>
 </div>
 <!-- ./wrapper -->
@@ -306,7 +306,7 @@
                         onMouseMove: function () {
                             // if the mouse is moving while popup is present, we
                             // don't extend the session.
-                            if (!$('#modal_session_warning').hasClass('in')) {
+                            if (!$('#modal_session_warning').hasClass('show')) {
                                 $.get({
                                     url: $.jTimeout().options.extendUrl,
                                     cache: false,
@@ -355,15 +355,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Error</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary float-right" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="modal">
                         Close
                     </button>
                 </div>
@@ -376,22 +374,20 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Success</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary float-right" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="modal">
                         Close
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade modal-warning" data-backdrop="static" id="modal_session_warning">
+    <div class="modal fade modal-warning" data-bs-backdrop="static" id="modal_session_warning">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -403,11 +399,11 @@
                     <p>To coninue your ssession, select <strong>Stay Signed In</strong></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success float-right button_stay_signed_in"
+                    <button type="button" class="btn btn-success float-end button_stay_signed_in"
                             data-bs-dismiss="modal">
                         Stay Signed In
                     </button>
-                    <button type="button" class="btn btn-danger float-left button_sign_out" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-danger float-start button_sign_out" data-bs-dismiss="modal">
                         Sign Out
                     </button>
                 </div>

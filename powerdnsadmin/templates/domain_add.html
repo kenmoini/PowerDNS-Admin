@@ -12,7 +12,7 @@
                     </h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">New Zone</li>
                     </ol>
@@ -35,20 +35,20 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label for="domain_name">Zone Name</label>
                                     <input type="text" class="form-control" name="domain_name" id="domain_name"
                                            placeholder="Enter a valid zone name (required)">
                                 </div>
                                 {% if domain_override_toggle == True %}
-                                    <div class="form-group">
+                                    <div class="mb-3">
                                         <input type="checkbox" id="domain_override" name="domain_override"
                                                class="checkbox">
                                         &nbsp;
                                         <label for="domain_override">Zone Override Record</label>
                                     </div>
                                 {% endif %}
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label for="selAccount">Account</label>
                                     <select name="accountid" id="selAccount" class="form-control">
                                         <option value="0">- No Account -</option>
@@ -57,36 +57,36 @@
                                         {% endfor %}
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label>Zone Type</label>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="radio_type" id="radio_type_native" value="native"
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="radio_type" id="radio_type_native" value="native"
                                                    checked>
                                             Native
                                         </label>
                                     </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="radio_type" id="radio_type_primary"
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="radio_type" id="radio_type_primary"
                                                    value="primary">
                                             Primary
                                         </label>
                                     </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="radio_type" id="radio_type_secondary"
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="radio_type" id="radio_type_secondary"
                                                    value="slave">
                                             Secondary
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group" style="display: none;" id="domain_master_address_div">
+                                <div class="mb-3" style="display: none;" id="domain_master_address_div">
                                     <input type="text" class="form-control" name="domain_master_address"
                                            id="domain_master_address"
                                            placeholder="Enter valid Primary Server IP addresses (separated by commas)">
                                 </div>
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label for="domain_template">Zone Template</label>
                                     <select class="form-control" id="domain_template" name="domain_template">
                                         <option value="0">No template</option>
@@ -95,32 +95,32 @@
                                         {% endfor %}
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label>SOA-EDIT-API</label>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="radio_type_soa_edit_api" id="radio_default"
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="radio_type_soa_edit_api" id="radio_default"
                                                    value="DEFAULT" checked>
                                             DEFAULT
                                         </label>
                                     </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="radio_type_soa_edit_api" id="radio_increase"
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="radio_type_soa_edit_api" id="radio_increase"
                                                    value="INCREASE">
                                             INCREASE
                                         </label>
                                     </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="radio_type_soa_edit_api" id="radio_epoch"
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="radio_type_soa_edit_api" id="radio_epoch"
                                                    value="EPOCH">
                                             EPOCH
                                         </label>
                                     </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="radio_type_soa_edit_api" id="radio_off"
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="radio_type_soa_edit_api" id="radio_off"
                                                    value="OFF"> OFF
                                         </label>
                                     </div>
@@ -132,7 +132,7 @@
                                         onclick="window.location.href='{{ url_for('dashboard.dashboard') }}'">
                                     <i class="fa-solid fa-window-close"></i>&nbsp;Cancel
                                 </button>
-                                <button type="submit" title="Create Zone" class="btn btn-primary float-right">
+                                <button type="submit" title="Create Zone" class="btn btn-primary float-end">
                                     <i class="fa-solid fa-save"></i>&nbsp;Create Zone
                                 </button>
                             </div>
@@ -256,16 +256,13 @@
                     <h4 class="modal-title">
                         WARNING
                     </h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
-                            id="button_close_warn_modal">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="button_close_warn_modal"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary center-block" data-bs-dismiss="modal"
+                    <button type="button" class="btn btn-primary d-block mx-auto" data-bs-dismiss="modal"
                             id="button_confirm_warn_modal">
                         CLOSE
                     </button>

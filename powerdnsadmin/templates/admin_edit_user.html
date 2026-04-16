@@ -17,7 +17,7 @@
                     <h1 class="m-0 text-dark">{{ action_label }} User</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ url_for('admin.manage_user') }}">Users</a></li>
                         <li class="breadcrumb-item active">{{ action_label }} User</li>
@@ -44,48 +44,41 @@
                             <div class="card-body">
                                 {% if error %}
                                     <div class="alert alert-danger alert-dismissible">
-                                        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">
-                                            &times;
-                                        </button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         <h4><i class="fa-solid fa-ban"></i> Error!</h4>
                                         {{ error }}
                                     </div>
                                     <span class="help-block">{{ error }}</span>
                                 {% endif %}
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="firstname">First Name</label>
                                     <input type="text" class="form-control" placeholder="First Name" name="firstname"
                                            id="firstname"
                                            {% if user %}value="{{ user.firstname }}" {% endif %}>
-                                    <span class="form-control-feedback"></span>
                                 </div>
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="lastname">Last Name</label>
                                     <input type="text" class="form-control" placeholder="Last name" name="lastname"
                                            id="lastname"
                                            {% if user %}value="{{ user.lastname }}" {% endif %}>
-                                    <span class="form-control-feedback"></span>
                                 </div>
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="email">E-mail address</label>
                                     <input type="email" class="form-control" placeholder="Email" name="email" id="email"
                                            {% if user %}value="{{ user.email }}" {% endif %}>
-                                    <span class="form-control-feedback"></span>
                                 </div>
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="username">Username</label>
                                     <input type="text" class="form-control" placeholder="Username" name="username"
                                            id="username"
                                            {% if user %}value="{{ user.username }}" {% endif %}
                                            {% if not create %}disabled{% endif %}>
-                                    <span class="form-control-feedback"></span>
                                 </div>
-                                <div class="form-group has-feedback {% if blank_password %}has-error{% endif %}">
+                                <div class="mb-3 {% if blank_password %}has-error{% endif %}">
                                     <label class="control-label" for="password">Password</label>
                                     <input type="password" class="form-control"
                                            placeholder="Password {% if create %}(Required){% else %}(Leave blank to keep unchanged){% endif %}"
                                            name="password" id="password">
-                                    <span class="form-control-feedback"></span>
                                     {% if blank_password %}
                                         <span class="help-block">The password cannot be blank.</span>
                                     {% endif %}
@@ -184,18 +177,16 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Confirmation</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="button" class="btn btn-danger float-right" id="button_otp_disable_confirm">
+                    <button type="button" class="btn btn-danger float-end" id="button_otp_disable_confirm">
                         Disable Two Factor Authentication
                     </button>
                 </div>

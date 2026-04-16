@@ -10,7 +10,7 @@
                     <h1 class="m-0 text-dark">Accounts</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item active">Accounts</li>
                     </ol>
@@ -148,15 +148,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Confirmation</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default float-left" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary float-start" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-danger" id="button_delete_confirm">Delete</button>
                 </div>
             </div>

@@ -10,7 +10,7 @@
                     <h1 class="m-0 text-dark">Server Settings</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Server Settings</li>
                     </ol>
@@ -25,7 +25,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <form role="form" method="post" data-bs-toggle="validator">
+                    <form role="form" method="post" data-toggle="validator">
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
                         <div class="card card-outline card-primary shadow">
                             <div class="card-header">
@@ -35,42 +35,40 @@
                             <div class="card-body">
                                 {% if not SETTING.get('pdns_api_url') or not SETTING.get('pdns_api_key') or not SETTING.get('pdns_version') %}
                                     <div class="alert alert-danger alert-dismissible">
-                                        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">
-                                            &times;
-                                        </button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         <h4><i class="icon fa fa-ban"></i> Error!</h4>
                                         Please complete your PowerDNS API configuration before continuing
                                     </div>
                                 {% endif %}
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="pdns_api_url">PowerDNS API URL</label>
                                     <input type="url" class="form-control" placeholder="PowerDNS API URL"
                                            name="pdns_api_url" id="pdns_api_url"
-                                           data-bs-error="Please input a valid PowerDNS API URL" required
+                                           data-error="Please input a valid PowerDNS API URL" required
                                            value="{{ pdns_api_url }}">
                                     <span class="help-block with-errors"></span>
                                 </div>
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="pdns_api_key">PowerDNS API Key</label>
                                     <input type="password" class="form-control" placeholder="PowerDNS API Key"
                                            name="pdns_api_key" id="pdns_api_key"
-                                           data-bs-error="Please input a valid PowerDNS API key"
+                                           data-error="Please input a valid PowerDNS API key"
                                            required
                                            value="{{ pdns_api_key }}">
                                     <span class="help-block with-errors"></span>
                                 </div>
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="pdns_version">PowerDNS Version</label>
                                     <input type="text" class="form-control" placeholder="PowerDNS Version"
                                            name="pdns_version" id="pdns_version"
-                                           data-bs-error="Please input PowerDNS version" required
+                                           data-error="Please input PowerDNS version" required
                                            value="{{ pdns_version }}">
                                     <span class="help-block with-errors"></span>
                                 </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary float-right" title="Save Settings">
+                                <button type="submit" class="btn btn-primary float-end" title="Save Settings">
                                     <i class="fa-solid fa-save"></i>&nbsp;Save Settings
                                 </button>
                             </div>

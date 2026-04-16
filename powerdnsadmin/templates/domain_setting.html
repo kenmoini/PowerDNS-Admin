@@ -28,7 +28,7 @@
                     </h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Edit Zone - {{ domain.name | pretty_domain_name }}</li>
                     </ol>
@@ -54,7 +54,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label for="selAccountId">Account</label>
                                     <select id="selAccountId" name="accountid" class="form-control" style="width:15em;">
                                         <option value="0">- No Account -</option>
@@ -88,7 +88,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <input type="checkbox" id="chkAutoPtr" class="auto_ptr_toggle"
                                        data-zone="{{ domain.name }}"
                                        {% for setting in domain.settings %}{% if setting.setting=='auto_ptr' and setting.value=='True' %}checked
@@ -116,7 +116,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <input type="checkbox" id="chkDynDns" class="dyndns_on_demand_toggle"
                                        data-zone="{{ domain.name }}"
                                        {% for setting in domain.settings %}{% if setting.setting=='create_via_dyndns' and setting.value=='True' %}checked
@@ -159,7 +159,7 @@
                                 <!-- /.row -->
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="form-group">
+                                        <div class="mb-3">
                                             <select multiple="multiple" class="form-control" id="domain_multi_user"
                                                     name="domain_multi_user[]">
                                                 {% for user in users %}
@@ -223,7 +223,7 @@
                                         <option {% if zone_type == type %}selected{% endif %} value="{{ type }}">{{ type | format_zone_type }}</option>
                                     {% endfor %}
                                 </select><br/>
-                                <div class="form-group" style="{% if zone_type != 'slave' %}display: none;{% endif %}" id="domain_master_address_div">
+                                <div class="mb-3" style="{% if zone_type != 'slave' %}display: none;{% endif %}" id="domain_master_address_div">
                                     <input type="text" class="form-control" name="domain_master_address"
                                            id="domain_master_address"
                                            placeholder="Enter valid Primary Server IP addresses (separated by commas)"
@@ -307,7 +307,7 @@
                                 records and
                                 user privileges associated with this zone will also be removed. This change cannot be
                                 reverted.</p>
-                            <button type="button" title="Delete Zone" class="btn btn-danger float-left delete_domain"
+                            <button type="button" title="Delete Zone" class="btn btn-danger float-start delete_domain"
                                     id="{{ domain.name }}">
                                 <i class="fa-solid fa-trash"></i>&nbsp;Delete Zone
                             </button>
@@ -438,15 +438,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Confirmation</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary float-left" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary float-start" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-danger" id="button_delete_confirm">
                         Delete
                     </button>

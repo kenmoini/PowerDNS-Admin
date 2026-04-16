@@ -10,7 +10,7 @@
                     <h1 class="m-0 text-dark">Activity</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item active">Activity</li>
                     </ol>
@@ -517,16 +517,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Confirmation</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p>Are you sure you want to remove all history?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger float-right"
+                    <button type="button" class="btn btn-danger float-end"
                             onclick="applyChanges({'_csrf_token': '{{ csrf_token() }}'}, $SCRIPT_ROOT + '/admin/history', false, true);">
                         Clear History
                     </button>
@@ -540,15 +538,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">History Details</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div id="modal-info-content"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default float-right" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

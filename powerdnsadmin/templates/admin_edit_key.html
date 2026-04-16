@@ -19,7 +19,7 @@
                     <h1 class="m-0 text-dark">{{ action_label }} API Key</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ url_for('admin.manage_keys') }}">API Keys</a></li>
                         <li class="breadcrumb-item active">{{ action_label }} API Key</li>
@@ -44,7 +44,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="role">Role</label>
                                     <select class="key_role form-control" id="key_role" name="key_role">
                                         {% for role in roles %}
@@ -57,11 +57,10 @@
                                     </select>
                                 </div>
                                 <!-- /.form-group -->
-                                <div class="form-group has-feedback">
+                                <div class="mb-3">
                                     <label class="control-label" for="description">Description</label>
                                     <input type="text" class="form-control" placeholder="Description" name="description"
                                         {% if key is not none %} value="{{ key.description }}" {% endif %}>
-                                    <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -74,7 +73,7 @@
                                 <p>This key will be linked to the accounts on the right,</p>
                                 <p>thus granting access to zones owned by the selected accounts.</p>
                                 <p>Click on accounts to move between the columns.</p>
-                                <div class="form-group col-2">
+                                <div class="mb-3 col-2">
                                     <select multiple="multiple" class="form-control" id="key_multi_account"
                                             name="key_multi_account">
                                         {% for account in accounts %}
@@ -93,7 +92,7 @@
                             <div class="card-body key-opts"{% if hide_opts %} style="display: none;"{% endif %}>
                                 <p>This key will have access to the zones on the right.</p>
                                 <p>Click on zones to move between the columns.</p>
-                                <div class="form-group col-2">
+                                <div class="mb-3 col-2">
                                     <select multiple="multiple" class="form-control" id="key_multi_domain"
                                             name="key_multi_domain">
                                         {% for domain in domains %}
@@ -105,11 +104,11 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="button" class="btn btn-secondary float-left" title="Cancel"
+                                <button type="button" class="btn btn-secondary float-start" title="Cancel"
                                         onclick="window.location.href='{{ url_for('admin.manage_keys') }}'">
                                     <i class="fa-solid fa-window-close"></i>&nbsp;Cancel
                                 </button>
-                                <button type="submit" class="btn btn-primary float-right"
+                                <button type="submit" class="btn btn-primary float-end"
                                         title="{{ action_label }} API Key" id="key_submit">
                                     <i class="fa-solid fa-save"></i>&nbsp;{{ action_label }} API Key
                                 </button>
@@ -296,9 +295,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">New API Key</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" id="button_close_modal">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="button_close_modal"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>
@@ -316,10 +313,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">WARNING</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
-                            id="button_close_warn_modal">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="button_close_warn_modal"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>

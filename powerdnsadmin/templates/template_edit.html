@@ -10,7 +10,7 @@
                     <h1 class="m-0 text-dark">Edit Zone Template</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('admin.templates') }}">Templates</a></li>
                         <li class="breadcrumb-item active">Edit Zone Template</li>
                     </ol>
@@ -29,11 +29,11 @@
                         <div class="card-header">
                             <h3 class="card-title">Zone Template Editor</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-primary float-left button_add_record"
+                                <button type="button" class="btn btn-primary float-start button_add_record"
                                         title="Add Record" id="{{ template }}">
                                     <i class="fa-solid fa-plus"></i>&nbsp;Add Record
                                 </button>
-                                <button type="button" class="btn btn-primary float-right button_apply_changes ms-2"
+                                <button type="button" class="btn btn-primary float-end button_apply_changes ms-2"
                                         title="Save Template" id="{{ template }}">
                                     <i class="fa-solid fa-save"></i>&nbsp;Save Template
                                 </button>
@@ -430,16 +430,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Confirmation</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary float-left" id="button_delete_cancel"
+                    <button type="button" class="btn btn-secondary float-start" id="button_delete_cancel"
                             data-bs-dismiss="modal">
                         Close
                     </button>
@@ -455,16 +452,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Confirmation</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary float-left" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary float-start" data-bs-dismiss="modal">
                         Close
                     </button>
                     <button type="button" class="btn btn-primary" id="button_apply_confirm">
@@ -479,10 +473,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Custom Record</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>

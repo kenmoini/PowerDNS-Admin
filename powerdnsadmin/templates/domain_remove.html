@@ -12,7 +12,7 @@
                     </h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Remove Zone</li>
                     </ol>
@@ -34,7 +34,7 @@
                         <form role="form" method="post" action="{{ url_for('domain.remove') }}">
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
                             <div class="card-body">
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label for="domainid">Zone</label>
                                     <select id=domainid class="form-control" style="width:15em;">
                                         <option value="0">- Select Zone -</option>
@@ -50,7 +50,7 @@
                                     <i class="fa-solid fa-window-close"></i>&nbsp;Cancel
                                 </button>
                                 <button type="button" title="Remove Zone"
-                                        class="btn btn-danger button_delete float-right">
+                                        class="btn btn-danger button_delete float-end">
                                     <i class="fa-solid fa-trash-alt"></i>&nbsp;Remove Zone
                                 </button>
                             </div>
@@ -114,9 +114,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Zone Removal Confirmation</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p></p>
@@ -126,7 +124,7 @@
                             data-bs-dismiss="modal">
                         <i class="fa-solid fa-window-close"></i>&nbsp;Cancel
                     </button>
-                    <button type="button" title="Remove Zone" class="btn btn-danger float-right"
+                    <button type="button" title="Remove Zone" class="btn btn-danger float-end"
                             id="button_delete_confirm">
                         <i class="fa-solid fa-trash-alt"></i>&nbsp;Remove Zone
                     </button>

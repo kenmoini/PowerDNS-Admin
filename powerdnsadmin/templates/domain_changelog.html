@@ -20,7 +20,7 @@
         </h1>
       </div>
       <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
+        <ol class="breadcrumb float-sm-end">
           <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a></li>
           <li class="breadcrumb-item active">Changelog: {{ domain.name | pretty_domain_name }}</li>
         </ol>
@@ -39,7 +39,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <button type="button" class="btn btn-primary float-left button_show_records" id="{{ domain.name }}">
+            <button type="button" class="btn btn-primary float-start button_show_records" id="{{ domain.name }}">
               <i class="fa-solid fa-arrow-left"></i>          
               &nbsp;Manage Zone {{ domain.name }}
             </button>

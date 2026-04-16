@@ -11,7 +11,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Global Search</li>
                     </ol>
@@ -42,21 +42,17 @@
                                         API.</p>
                                 </div>
                                 <!-- /.callout -->
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <label id="txtQuery" class="input-group-text">
-                                                Search Query
-                                            </label>
-                                        </div>
-                                            <input type="text" id="txtQuery" name="q" class="form-control"
-                                                   value="{{ query }}"
-                                                    placeholder="Enter search query...">
-                                            <div class="input-group-append">
-                                            <button type="submit" class="btn btn-success" title="Execute Query">
-                                                <i class="fa-solid fa-search"></i>
-                                            </button>
-                                        </div>
+                                        <label id="txtQuery" class="input-group-text">
+                                            Search Query
+                                        </label>
+                                        <input type="text" id="txtQuery" name="q" class="form-control"
+                                               value="{{ query }}"
+                                               placeholder="Enter search query...">
+                                        <button type="submit" class="btn btn-success" title="Execute Query">
+                                            <i class="fa-solid fa-search"></i>
+                                        </button>
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
