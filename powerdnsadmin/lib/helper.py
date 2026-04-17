@@ -1,5 +1,5 @@
 import requests
-from urllib.parse import urljoin
+from urllib.parse import urlparse, urlunparse
 from flask import request, current_app
 
 from ..models import Setting
@@ -28,7 +28,21 @@ def forward_request():
         'X-API-KEY': pdns_api_key
     }
 
-    url = urljoin(pdns_api_url, request.full_path)
+    # url = urljoin(pdns_api_url, request.full_path)
+
+    parsed_base = urlparse(pdns_api_url)
+    base_path = parsed_base.path.rstrip('/')
+    request_path = request.path.lstrip('/')
+    target_path = f"{base_path}/{request_path}" if request_path else (base_path or '/')
+    query = request.query_string.decode('utf-8') if request.query_string else ''
+    url = urlunparse((
+        parsed_base.scheme,
+        parsed_base.netloc,
+        target_path,
+        '',
+        query,
+        ''
+    ))
 
     resp = requests.request(request.method,
                             url,
