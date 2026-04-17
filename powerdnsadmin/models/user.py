@@ -91,8 +91,9 @@ class User(db.Model):
         return '<User {0}>'.format(self.username)
 
     def get_totp_uri(self):
+        safe_username = ldap.filter.escape_filter_chars(self.username)
         return "otpauth://totp/{0}:{1}?secret={2}&issuer=PowerDNS-Admin".format(
-            Setting().get('site_name'), self.username, self.otp_secret)
+            Setting().get('site_name'), safe_username, self.otp_secret)
 
     def verify_totp(self, token):
         totp = pyotp.TOTP(self.otp_secret)
@@ -149,8 +150,9 @@ class User(db.Model):
         try:
             conn = self.ldap_init_conn()
             if Setting().get('ldap_type') == 'ad':
+                safe_username = ldap.filter.escape_filter_chars(self.username)
                 conn.simple_bind_s(
-                    "{0}@{1}".format(self.username,
+                    "{0}@{1}".format(safe_username,
                                      Setting().get('ldap_domain')),
                     self.password)
             else:
@@ -223,15 +225,15 @@ class User(db.Model):
             LDAP_GROUP_SECURITY_ENABLED = Setting().get('ldap_sg_enabled')
 
             # validate AD user password
+            safe_username = ldap.filter.escape_filter_chars(self.username)
             if Setting().get('ldap_type') == 'ad' and not trust_user:
-                ldap_username = "{0}@{1}".format(self.username,
+                ldap_username = "{0}@{1}".format(safe_username,
                                                  Setting().get('ldap_domain'))
                 if not self.ldap_auth(ldap_username, self.password):
                     current_app.logger.error(
                         'User "{0}" input a wrong LDAP password. Authentication request from {1}'
-                        .format(self.username, src_ip))
+                        .format(safe_username, src_ip))
                     return False
-            safe_username = ldap.filter.escape_filter_chars(self.username)
             searchFilter = "(&({0}={1}){2})".format(LDAP_FILTER_USERNAME,
                                                     safe_username,
                                                     LDAP_FILTER_BASIC)
@@ -243,7 +245,7 @@ class User(db.Model):
             if not ldap_result:
                 current_app.logger.warning(
                     'LDAP User "{0}" does not exist. Authentication request from {1}'
-                    .format(self.username, src_ip))
+                    .format(safe_username, src_ip))
                 return False
             else:
                 try:
@@ -255,7 +257,7 @@ class User(db.Model):
                         if not self.ldap_auth(ldap_username, self.password):
                             current_app.logger.error(
                                 'User "{0}" input a wrong LDAP password. Authentication request from {1}'
-                                .format(self.username, src_ip))
+                                .format(safe_username, src_ip))
                             return False
 
                     # check if LDAP_GROUP_SECURITY_ENABLED is True
@@ -269,20 +271,20 @@ class User(db.Model):
                                     role_name = 'Administrator'
                                     current_app.logger.info(
                                         'User {0} is part of the "{1}" group that allows admin access to PowerDNS-Admin'
-                                        .format(self.username, LDAP_ADMIN_GROUP))
+                                        .format(safe_username, LDAP_ADMIN_GROUP))
                                 elif (LDAP_OPERATOR_GROUP and self.ldap_search(groupSearchFilter, LDAP_OPERATOR_GROUP)):
                                     role_name = 'Operator'
                                     current_app.logger.info(
                                         'User {0} is part of the "{1}" group that allows operator access to PowerDNS-Admin'
-                                        .format(self.username, LDAP_OPERATOR_GROUP))
+                                        .format(safe_username, LDAP_OPERATOR_GROUP))
                                 elif (LDAP_USER_GROUP and self.ldap_search(groupSearchFilter, LDAP_USER_GROUP)):
                                     current_app.logger.info(
                                         'User {0} is part of the "{1}" group that allows user access to PowerDNS-Admin'
-                                        .format(self.username, LDAP_USER_GROUP))
+                                        .format(safe_username, LDAP_USER_GROUP))
                                 else:
                                     current_app.logger.error(
                                         'User {0} is not part of any security groups that allow access to PowerDNS-Admin'
-                                        .format(self.username))
+                                        .format(safe_username))
                                     return False
                             elif LDAP_TYPE == 'ad':
                                 ldap_group_security_roles = OrderedDict(
@@ -313,7 +315,7 @@ class User(db.Model):
 
                                 if not ldap_user_groups:
                                     current_app.logger.error(
-                                        f"User '{self.username}' "
+                                        f"User '{safe_username}' "
                                         "does not belong to any group "
                                         "while LDAP_GROUP_SECURITY_ENABLED is ON"
                                     )
@@ -321,7 +323,7 @@ class User(db.Model):
 
                                 current_app.logger.debug(
                                     "LDAP User security groups "
-                                    f"for user '{self.username}': "
+                                    f"for user '{safe_username}': "
                                     " ".join(ldap_user_groups)
                                 )
 
@@ -333,7 +335,7 @@ class User(db.Model):
 
                                     role_name = role
                                     current_app.logger.info(
-                                        f"User '{self.username}' member of "
+                                        f"User '{safe_username}' member of "
                                         f"the '{ldap_group}' group that allows "
                                         f"'{role}' access to to PowerDNS-Admin"
                                     )
@@ -347,7 +349,7 @@ class User(db.Model):
                         except Exception as e:
                             current_app.logger.error(
                                 'LDAP group lookup for user "{0}" has failed. Authentication request from {1}'
-                                .format(self.username, src_ip))
+                                .format(safe_username, src_ip))
                             current_app.logger.debug(traceback.format_exc())
                             return False
 
@@ -651,8 +653,9 @@ class User(db.Model):
         LDAP_BASE_DN = Setting().get('ldap_base_dn')
         LDAP_FILTER_USERNAME = Setting().get('ldap_filter_username')
         LDAP_FILTER_BASIC = Setting().get('ldap_filter_basic')
+        safe_username = ldap.filter.escape_filter_chars(self.username)
         searchFilter = "(&({0}={1}){2})".format(LDAP_FILTER_USERNAME,
-                                                        self.username,
+                                                        safe_username,
                                                         LDAP_FILTER_BASIC)
         current_app.logger.debug('Ldap searchFilter {0}'.format(searchFilter))
         ldap_result = self.ldap_search(searchFilter, LDAP_BASE_DN, [key])
