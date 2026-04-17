@@ -41,7 +41,7 @@ yum install yarn
 NOTE: Please adjust `/opt/web/powerdns-admin` to your local web application directory
 
 ```
-git clone https://github.com/PowerDNS-Admin/PowerDNS-Admin.git /opt/web/powerdns-admin
+git clone https://github.com/kenmoini/powerdns-admin.git /opt/web/powerdns-admin
 cd /opt/web/powerdns-admin
 virtualenv -p python3 flask
 ```

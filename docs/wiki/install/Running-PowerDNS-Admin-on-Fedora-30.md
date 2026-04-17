@@ -35,7 +35,7 @@ npm install yarn -g
 ## Clone the PowerDNS-Admin repository to the installation path:
 ```bash
 cd /opt/web/
-git clone https://github.com/PowerDNS-Admin/PowerDNS-Admin.git powerdns-admin
+git clone https://github.com/kenmoini/powerdns-admin.git powerdns-admin
 ```
 
 **Prepare the Virtual Environment:**

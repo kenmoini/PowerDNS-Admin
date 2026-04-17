@@ -42,7 +42,7 @@ sudo apt install -y yarn
 _**Note:**_ Please adjust `/opt/web/powerdns-admin` to your local web application directory
 
 ```bash
-git clone https://github.com/PowerDNS-Admin/PowerDNS-Admin.git /opt/web/powerdns-admin
+git clone https://github.com/kenmoini/powerdns-admin.git /opt/web/powerdns-admin
 cd /opt/web/powerdns-admin
 python3 -mvenv ./venv
 ```

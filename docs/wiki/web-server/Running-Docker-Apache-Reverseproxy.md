@@ -11,7 +11,7 @@ docker-compose.yml
 version: "3"
 services:
   app:
-    image: powerdnsadmin/pda-legacy:latest
+    image: ghcr.io/kenmoini/powerdns-admin:latest
     container_name: powerdns
     restart: always
     network_mode: "host"

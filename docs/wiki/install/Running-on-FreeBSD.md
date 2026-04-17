@@ -17,7 +17,7 @@ sudo pkg install libxml2 libxslt pkgconf py37-xmlsec py37-cffi py37-ldap
 _**Note:**_ Please adjust `/opt/powerdns-admin` to your local web application directory
 
 ```bash
-git clone https://github.com/PowerDNS-Admin/PowerDNS-Admin.git /opt/powerdns-admin
+git clone https://github.com/kenmoini/powerdns-admin.git /opt/powerdns-admin
 cd /opt/powerdns-admin
 ```
 

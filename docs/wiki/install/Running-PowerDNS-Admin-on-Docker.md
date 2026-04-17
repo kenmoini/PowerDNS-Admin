@@ -1,6 +1,6 @@
 # Installation on docker
 
-The Docker image is powerdnsadmin/pda-legacy available on [DockerHub](https://hub.docker.com/r/powerdnsadmin/pda-legacy)
+The Docker image is kenmoini/powerdns-admin available on [GitHub Container Registry](https://github.com/kenmoini/powerdns-admin/pkgs/container/powerdns-admin)
 
 The supported environment variables to configure the container are located [here](../configuration/Environment-variables.md).
 
@@ -10,5 +10,5 @@ docker run -d \
     -e SECRET_KEY='a-very-secret-key' \
     -v pda-data:/data \
     -p 8080:80 \
-    powerdnsadmin/pda-legacy:latest
+    ghcr.io/kenmoini/powerdns-admin:latest
 ```

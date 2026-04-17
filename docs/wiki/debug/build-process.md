@@ -34,7 +34,7 @@ Create a git folder in the location of the `docker-compose.yml` and clone the re
 ```
 mkdir git
 cd git 
-git clone https://github.com/PowerDNS-Admin/PowerDNS-Admin.git .
+git clone https://github.com/kenmoini/powerdns-admin.git .
 ```
 
 In case you are behind an SSL Filter like me, you can add the following to each stage of the `git/docker/Dockerfile`
