@@ -45,5 +45,5 @@ werkzeug==3.1.8
 zipp==3.23.1
 rcssmin==1.2.2
 zxcvbn==4.5.0
-psycopg2==2.9.11
+psycopg2==2.9.12
 setuptools==78.1.1
