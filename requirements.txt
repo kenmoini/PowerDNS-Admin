@@ -33,7 +33,7 @@ passlib==1.7.4
 pyasn1==0.6.3
 pyotp==2.9.0
 pytest==9.0.3
-python-ldap==3.4.5
+python-ldap==3.4.6
 python3-saml==1.16.0
 pytimeparse==1.1.8
 pytz==2022.7.1
