@@ -1,5 +1,5 @@
 # Build image
-FROM alpine:3.23 AS builder
+FROM alpine:3.24 AS builder
 
 ARG BUILD_DEPENDENCIES="build-base \
     libffi-dev \
@@ -69,7 +69,7 @@ RUN mkdir -p /app && \
     cp -r /build/configs/docker_config.py /app/configs
 
 # Distribution image
-FROM alpine:3.23
+FROM alpine:3.24
 
 ENV FLASK_APP=/app/powerdnsadmin/__init__.py \
     USER=pda
