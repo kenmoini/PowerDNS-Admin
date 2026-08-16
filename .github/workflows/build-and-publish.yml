@@ -77,7 +77,7 @@ jobs:
         uses: docker/setup-buildx-action@v4
 
       - name: Repository Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Docker Image Metadata
         id: meta
