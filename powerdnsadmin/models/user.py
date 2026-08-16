@@ -9,6 +9,8 @@ from collections import OrderedDict
 from flask import current_app
 from flask_login import AnonymousUserMixin
 from sqlalchemy import orm
+from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
 import qrcode as qrc
 import qrcode.image.svg as qrc_svg
 from io import BytesIO
@@ -420,14 +422,15 @@ class User(db.Model):
         Create local user witch stores username / password in the DB
         """
         # check if username existed
-        user = User.query.filter(str(User.username).lower() == self.username.lower()).first()
+        user = User.query.filter(func.lower(User.username) == self.username.lower()).first()
         if user:
             return {'status': False, 'msg': 'Username is already in use'}
 
         # check if email existed
-        user = User.query.filter(str(User.email).lower() == self.email.lower()).first()
-        if user:
-            return {'status': False, 'msg': 'Email address is already in use'}
+        if self.email:
+            user = User.query.filter(func.lower(User.email) == self.email.lower()).first()
+            if user:
+                return {'status': False, 'msg': 'Email address is already in use'}
 
         # first register user will be in Administrator role
         if self.role_id is None:
@@ -446,8 +449,23 @@ class User(db.Model):
         if self.password and self.password != '*':
             self.password = self.password.decode("utf-8")
 
-        db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except IntegrityError as e:
+            # A concurrent registration can pass the checks above before this
+            # one commits. Roll back so the scoped session stays usable.
+            # ix_user_username is the only unique constraint on this table, so
+            # a duplicate username is the expected cause; log anything else so
+            # it is not silently reported as a name collision.
+            db.session.rollback()
+            current_app.logger.warning(
+                'IntegrityError creating local user {0}: {1}'.format(
+                    self.username, e))
+            return {'status': False, 'msg': 'Username is already in use'}
+        except Exception:
+            db.session.rollback()
+            raise
         return {'status': True, 'msg': 'Created user successfully'}
 
     def update_local_user(self):
