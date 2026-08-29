@@ -29,10 +29,10 @@
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.10.tgz#277a542aff6776d8a9b15f2ac682a663e3e94bbd"
   integrity sha512-TC0dmN0K8YcWEAEfiPi5gJP14eJe30TTGjkvek3iM/1NdHHsdCA/Td6GvNndMOo/iSnIsZ4HuuhrYPDAmbxzww==
 
-admin-lte@4.0.0-rc7:
-  version "4.0.0-rc7"
-  resolved "https://registry.yarnpkg.com/admin-lte/-/admin-lte-4.0.0-rc7.tgz#6ced72cc682955221c31d5fe9dda85be7c42a6e0"
-  integrity sha512-v7JYiuxONrpXxvoRVhFJuLpZ9xoBvQ1bHkE1lanVR8+/AqBATWXU3vOO0TAWOoxhG6/26JkU5otXq0Z2SRQjZQ==
+admin-lte@4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/admin-lte/-/admin-lte-4.0.4.tgz#9bc6efdb9d024bc924ceee68ad9f77c6c32c73e8"
+  integrity sha512-bN8WQZHpiGvpZmCsS6fQC0A2Vy0sOJTb6trDmebn97QMX2NUIxIOMQy37ifvNQ9VbQWaWbEsykIXVhklPw6EGg==
 
 bootstrap-datepicker@^1.10.1:
   version "1.10.1"
